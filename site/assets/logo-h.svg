@@ -4,7 +4,11 @@
 	 viewBox="0 0 1024.6 385.3" style="enable-background:new 0 0 1024.6 385.3;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#C9992A;}
+<<<<<<< HEAD
 	.st1{fill:#163CA4;}
+=======
+	.st1{fill:#085FB9;}
+>>>>>>> c1e3aae (Populate agenda from tentative schedule and update hero)
 </style>
 <path class="st0" d="M136.2,196.6c-17.9,0-35.2,0-52.8,0c0-10.4,0-20.5,0-30.7c1.6-0.6,84.6-0.9,88.5-0.3c0.5,0.5,0.3,1.1,0.3,1.7
 	c0,25.9,0.1,51.8,0,77.7c0,31.6-0.1,30.9-0.1,30.9h-32.2c0,0,0-11,0-23c-3.1,2.3-5.7,4.6-8.4,6.6c-9,6.6-18.8,11.4-29.6,13.9
@@ -84,4 +88,6 @@
 	C783.8,271.4,790.1,272.8,795.2,268.4z"/>
 <path class="st1" d="M886.9,253.7c-3.2,0-5.9,0-8.6,0c-0.4-1.1-0.2-2-0.2-3.1c7.2,0,14.4,0,21.7,0c0.4,0.9,0.2,1.9,0.2,3.1
 	c-2.8,0-5.4,0-8.3,0c0,6.9,0,13.6,0,20.5c-1.6,0-3,0-4.7,0C886.9,267.5,886.9,260.8,886.9,253.7z"/>
+<image style="overflow:visible;" width="1358" height="1148" xlink:href="../../../../../../Downloads/WhatsApp Image 2026-09-29 at 15.51.10.jpeg"  transform="matrix(1 0 0 1 1057 -521)">
+</image>
 </svg>

@@ -10,14 +10,14 @@
   :root{
     --ink:#1B2140;
     --muted:#5B6180;
-    --blue:#1D2B78;
+    --blue:#132279;
     --blue-deep:#12184A;
     --cream:#F3ECDF;
     --paper:#FFFFFF;
     --gold:#C9992A;
     --line:#E3DFCB;
     --line-on-blue:rgba(255,255,255,0.16);
-    --ghost:#7480B8;
+    --ghost:#085FB9;
     --ghost-on-blue:#6B7BC4;
     --font-display:'Hanken Grotesk', system-ui, sans-serif;
     --font-body:'Work Sans', system-ui, sans-serif;
@@ -181,11 +181,25 @@
 
   /* schedule */
   .schedule{background:var(--paper);}
+  .phase + .phase{margin-top:64px;}
+  .phase-head{display:flex;flex-direction:column;gap:6px;padding-bottom:16px;border-bottom:2px solid var(--blue);}
+  .phase-head h3{font-size:22px;font-weight:600;}
+  .phase-head p{font-size:14px;line-height:1.55;color:var(--muted);}
   .day-list{display:flex;flex-direction:column;}
   .day-row{display:flex;gap:28px;padding-block:18px;border-bottom:1px solid var(--line);align-items:baseline;}
   .day-row:last-child{border-bottom:none;}
-  .day-row .time{font-family:var(--font-mono);width:88px;flex-shrink:0;color:var(--blue);font-weight:600;font-size:13.5px;font-variant-numeric:tabular-nums;}
-  .day-row .what{font-size:15.5px;color:var(--ink);font-weight:400;}
+  .day-row .date{font-family:var(--font-mono);width:112px;flex-shrink:0;color:var(--ink);font-weight:600;font-size:13.5px;}
+  .day-row .time{font-family:var(--font-mono);width:112px;flex-shrink:0;color:var(--blue);font-weight:600;font-size:13.5px;font-variant-numeric:tabular-nums;}
+  .day-row .what{display:flex;flex-direction:column;gap:3px;font-size:15.5px;color:var(--ink);font-weight:400;}
+  .day-row .where{font-size:13px;color:var(--muted);}
+  .day-row.cont .date{visibility:hidden;}
+  .tag-onsite{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:3px;background:var(--cream);color:var(--blue);font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;vertical-align:2px;}
+  @media (max-width:640px){
+    .day-row{flex-wrap:wrap;gap:4px 16px;}
+    .day-row .date, .day-row .time{width:auto;}
+    .day-row .what{flex-basis:100%;}
+    .day-row.cont .date{display:none;}
+  }
 
   /* register cta */
   .register{background:var(--blue);color:#fff;text-align:center;}
@@ -233,19 +247,33 @@
 
 <header class="hero">
   <div class="wrap">
+<<<<<<< HEAD
     <img class="hero-logo" src="assets/logo.svg" alt="Gold for Good Hackathon logo">
     <span class="kicker">October 21 · One-day hackathon</span>
     <h1>Reimagining the gold production line, <em>together</em>.</h1>
     <p class="lede">A one-day build sprint bringing engineers, miners, technologists and diplomats together to design real improvements across the gold value chain — efficiency, traceability, safety and sustainability.</p>
+=======
+    <img class="hero-logo" src="assets/logo.svg" alt="Logo de Gold for Good Hackathon">
+    <span class="kicker">21 – 28 de noviembre · Una semana de hackatón</span>
+    <h1>Reimaginando la cadena de producción del oro, <em>juntos</em>.</h1>
+    <p class="lede">Seis semanas de sesiones informativas y una semana intensiva de creación que reúnen a ingenieros, mineros, tecnólogos y diplomáticos para diseñar mejoras reales en toda la cadena de valor del oro: eficiencia, trazabilidad, seguridad y sostenibilidad.</p>
+>>>>>>> c1e3aae (Populate agenda from tentative schedule and update hero)
     <div class="hero-ctas">
       <a href="#register" class="btn btn-gold">Apply to compete</a>
       <a href="#schedule" class="btn btn-ghost">See the agenda</a>
     </div>
     <div class="stat-row">
+<<<<<<< HEAD
       <div class="stat"><span class="stat-label">Date</span><span class="stat-value">Oct 21, 2026</span></div>
       <div class="stat"><span class="stat-label">Format</span><span class="stat-value">[In-person / Hybrid]</span></div>
       <div class="stat"><span class="stat-label">Location</span><a class="stat-value stat-link" href="https://maps.app.goo.gl/zE9rFEyxRneadQ8h6" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Green Planet, La Paz, Bolivia</a></div>
       <div class="stat"><span class="stat-label">Team size</span><span class="stat-value">[2–5 people]</span></div>
+=======
+      <div class="stat"><span class="stat-label">Fecha</span><span class="stat-value">21–28 nov 2026</span></div>
+      <div class="stat"><span class="stat-label">Formato</span><span class="stat-value">Presencial</span></div>
+      <div class="stat"><span class="stat-label">Lugar</span><a class="stat-value stat-link" href="https://www.google.com/maps/search/?api=1&amp;query=Universidad+Mayor+de+San+Andr%C3%A9s+La+Paz" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>UMSA, La Paz, Bolivia</a></div>
+      <div class="stat"><span class="stat-label">Equipos</span><span class="stat-value">[2–5 personas]</span></div>
+>>>>>>> c1e3aae (Populate agenda from tentative schedule and update hero)
     </div>
   </div>
 </header>
@@ -261,9 +289,15 @@
 <section class="about" id="about">
   <div class="wrap">
     <div class="section-head">
+<<<<<<< HEAD
       <span class="ghost-word" style="color:var(--ghost);">Challenge</span>
       <h2 style="font-size:38px;font-weight:500;">Four tracks. One value chain.</h2>
       <p>Teams pick a track and spend the day prototyping a real solution, mentored by industry engineers and judged by sponsor and embassy delegates.</p>
+=======
+      <span class="ghost-word" style="color:var(--ghost);">Desafío</span>
+      <h2 style="font-size:38px;font-weight:500;">Cuatro categorías. Una cadena de valor.</h2>
+      <p>Los equipos eligen una categoría y dedican la semana del hackatón a prototipar una solución real, con mentorías 1 a 1 de expertos en salud, medio ambiente y trazabilidad, y una evaluación en dos etapas: técnica y ante autoridades.</p>
+>>>>>>> c1e3aae (Populate agenda from tentative schedule and update hero)
     </div>
     <div class="tracks">
       <div class="track">
@@ -293,9 +327,15 @@
 <section class="speakers" id="speakers">
   <div class="wrap">
     <div class="section-head">
+<<<<<<< HEAD
       <span class="ghost-word">Lineup</span>
       <h2 style="font-size:38px;font-weight:500;color:#fff;">Speakers &amp; mentors</h2>
       <p>Placeholder lineup — swap in confirmed names, titles and bios as they're announced.</p>
+=======
+      <span class="ghost-word"  style="color:var(--ghost);">Invitados</span>
+      <h2 style="font-size:38px;font-weight:500;color:#fff;">Ponentes y mentores</h2>
+      <p>Lista provisional: se actualizarán los nombres, cargos y biografías a medida que se confirmen.</p>
+>>>>>>> c1e3aae (Populate agenda from tentative schedule and update hero)
     </div>
     <div class="grid-speakers">
       <div class="card-speaker">
@@ -355,6 +395,7 @@
 <section class="schedule" id="schedule">
   <div class="wrap">
     <div class="section-head">
+<<<<<<< HEAD
       <span class="kicker" style="color:var(--blue);">Oct 21, 2026</span>
       <h2 style="font-size:38px;font-weight:500;margin-top:10px;">The day at a glance</h2>
     </div>
@@ -366,15 +407,76 @@
       <div class="day-row"><span class="time">[17:00]</span><span class="what">Submissions close</span></div>
       <div class="day-row"><span class="time">[18:00]</span><span class="what">Pitches &amp; judging</span></div>
       <div class="day-row"><span class="time">[20:00]</span><span class="what">Awards ceremony &amp; closing reception</span></div>
+=======
+      <span class="kicker" style="color:var(--blue);">13 de octubre – 28 de noviembre de 2026</span>
+      <h2 style="font-size:38px;font-weight:500;margin-top:10px;">Agenda</h2>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head">
+        <span class="kicker" style="color:var(--blue);">13 oct – 20 nov</span>
+        <h3>Sesiones informativas</h3>
+        <p>Salvo indicación contraria, cada sesión sigue el mismo formato: 19:00 presentación · 19:30 consultas · 20:00 matching/networking.</p>
+      </div>
+      <div class="day-list">
+        <div class="day-row"><span class="date">Mar 13 oct</span><span class="time">—</span><span class="what">Lanzamiento oficial: conferencia de prensa, habilitación de la página web e inicio de registro<span class="where">Todos los socios</span></span></div>
+        <div class="day-row"><span class="date">13 – 18 oct</span><span class="time">—</span><span class="what">Difusión e inscripciones en facultades, carreras e instituciones socias<span class="where">Todos los socios</span></span></div>
+        <div class="day-row"><span class="date">Mar 20 oct</span><span class="time">19:00–20:30</span><span class="what">Salud: [Presentación 1]<span class="where">UMSA</span></span></div>
+        <div class="day-row"><span class="date">Jue 22 oct</span><span class="time">19:00–20:30</span><span class="what">Salud: [Presentación 2]<span class="where">OPS/OMS</span></span></div>
+        <div class="day-row"><span class="date">Mar 27 oct</span><span class="time">09:00–14:00</span><span class="what">Seminario «Presentación de resultados de investigación»<span class="where">UMSA · Paraninfo</span></span></div>
+        <div class="day-row cont"><span class="date">Mar 27 oct</span><span class="time">19:00–20:30</span><span class="what">Medio ambiente: [Presentación 3]<span class="where">IRD</span></span></div>
+        <div class="day-row"><span class="date">Jue 29 oct</span><span class="time">19:00–20:30</span><span class="what">Medio ambiente: [Presentación 4]<span class="where">WCS</span></span></div>
+        <div class="day-row"><span class="date">Mar 3 nov</span><span class="time">19:00–20:30</span><span class="what"><span>Medio ambiente: [Presentación 5]<span class="tag-onsite">Networking presencial</span></span><span class="where">UMSA</span></span></div>
+        <div class="day-row"><span class="date">Jue 5 nov</span><span class="time">19:00–20:30</span><span class="what">Trazabilidad: [Presentación 6]<span class="where">Ministerio de Minería · AJAM · SENARECOM</span></span></div>
+        <div class="day-row"><span class="date">Mar 10 nov</span><span class="time">19:00–20:30</span><span class="what"><span>Retos y dinámicas de la producción cooperativista: [Presentación 7]<span class="tag-onsite">Networking presencial</span></span><span class="where">Sector cooperativista · Empresas mineras · planetGOLD</span></span></div>
+        <div class="day-row"><span class="date">Jue 12 nov</span><span class="time">19:00–20:30</span><span class="what">Pueblos indígenas: [Presentación 8]<span class="where">CEDIB</span></span></div>
+        <div class="day-row"><span class="date">Lun 16 nov</span><span class="time">17:00–20:30</span><span class="what"><span>Capacitación especializada: metodología de hackatón, pitch, validación y prototipado<span class="tag-onsite">Presencial</span></span><span class="where">Aceleratec · entrenamiento en pitch, preparación para jurados, validación acelerada de prototipos y networking</span></span></div>
+        <div class="day-row"><span class="date">Mié 18 nov</span><span class="time">19:00–20:30</span><span class="what">Sistemas de producción: [Presentación 9]<span class="where">UMSA</span></span></div>
+        <div class="day-row"><span class="date">Vie 20 nov</span><span class="time">19:00–20:30</span><span class="what">Trazabilidad: [Presentación 10]<span class="where">planetGOLD</span></span></div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head">
+        <span class="kicker" style="color:var(--blue);">21 – 28 nov</span>
+        <h3>Semana del hackatón</h3>
+        <p>Una semana de ideación, prototipado y mentorías 1 a 1, que culmina con la evaluación de soluciones y la premiación.</p>
+      </div>
+      <div class="day-list">
+        <div class="day-row"><span class="date">Sáb 21 nov</span><span class="time">10:00–12:00</span><span class="what">Acto de inauguración<span class="where">Paraninfo UMSA</span></span></div>
+        <div class="day-row cont"><span class="date">Sáb 21 nov</span><span class="time">12:00–13:00</span><span class="what">Taller de inducción (Aceleratec) y kick-off<span class="where">Biblioteca Central UMSA</span></span></div>
+        <div class="day-row"><span class="date">Dom 22 nov</span><span class="time">09:00–18:00</span><span class="what">Ideación y prototipado<span class="where">Trabajo libre</span></span></div>
+        <div class="day-row"><span class="date">Lun 23 nov</span><span class="time">09:00–14:00</span><span class="what">Ideación y prototipado<span class="where">K-LAB</span></span></div>
+        <div class="day-row cont"><span class="date">Lun 23 nov</span><span class="time">14:00–18:00</span><span class="what">Mentoría 1 · Salud: sesiones 1 a 1 de 20 min (OPS/OMS, IRD, UMSA) + mentoría Aceleratec: presentación, pitch y deck<span class="where">K-LAB</span></span></div>
+        <div class="day-row"><span class="date">Mar 24 nov</span><span class="time">09:00–14:00</span><span class="what">Ideación y prototipado<span class="where">K-LAB</span></span></div>
+        <div class="day-row cont"><span class="date">Mar 24 nov</span><span class="time">14:00–18:00</span><span class="what">Mentoría 2 · Trazabilidad y tecnología: sesiones 1 a 1 (planetGOLD, Ministerio de Minería, UMSA) + mentoría Aceleratec: presentación, pitch y deck<span class="where">K-LAB</span></span></div>
+        <div class="day-row"><span class="date">Mié 25 nov</span><span class="time">09:00–14:00</span><span class="what">Ideación y prototipado<span class="where">K-LAB</span></span></div>
+        <div class="day-row cont"><span class="date">Mié 25 nov</span><span class="time">14:00–18:00</span><span class="what">Mentoría 3 · Medio ambiente: sesiones 1 a 1 de 20 min (WCS, IRD, UMSA) + mentoría Aceleratec: presentación, pitch y deck<span class="where">K-LAB</span></span></div>
+        <div class="day-row"><span class="date">Jue 26 nov</span><span class="time">09:00–13:00</span><span class="what">Mentoría 4 · Aceleratec: revisión del pitch<span class="where">K-LAB</span></span></div>
+        <div class="day-row cont"><span class="date">Jue 26 nov</span><span class="time">14:00–17:00</span><span class="what">Ensayo del pitch<span class="where">K-LAB</span></span></div>
+        <div class="day-row cont"><span class="date">Jue 26 nov</span><span class="time">18:00–23:59</span><span class="what">Entrega del deck de pitch<span class="where">K-LAB</span></span></div>
+        <div class="day-row"><span class="date">Vie 27 nov</span><span class="time">09:00–18:00</span><span class="what">1.ª evaluación de soluciones (técnica)<span class="where">K-LAB</span></span></div>
+        <div class="day-row"><span class="date">Sáb 28 nov</span><span class="time">09:00–10:30</span><span class="what">2.ª evaluación de soluciones (autoridades)<span class="where">Paraninfo UMSA</span></span></div>
+        <div class="day-row cont"><span class="date">Sáb 28 nov</span><span class="time">10:30–11:00</span><span class="what">Pausa café<span class="where">Paraninfo UMSA</span></span></div>
+        <div class="day-row cont"><span class="date">Sáb 28 nov</span><span class="time">10:30–12:00</span><span class="what">Premiación y clausura<span class="where">Paraninfo UMSA</span></span></div>
+        <div class="day-row cont"><span class="date">Sáb 28 nov</span><span class="time">12:00–13:00</span><span class="what">Cóctel<span class="where">Biblioteca Central UMSA</span></span></div>
+      </div>
+>>>>>>> c1e3aae (Populate agenda from tentative schedule and update hero)
     </div>
   </div>
 </section>
 
 <section class="register" id="register">
   <div class="wrap">
+<<<<<<< HEAD
     <h2>Ready to help <em>modernize</em> the gold production line?</h2>
     <p>Solo builders and teams up to [5] are welcome. Applications close [October X].</p>
     <a href="#" class="btn btn-gold btn-lg">Apply now</a>
+=======
+    <h2>¿Listo para ayudar a <em>modernizar</em> la cadena de producción del oro?</h2>
+    <p>Pueden participar personas individuales y equipos de hasta [5] integrantes. Las inscripciones abren el 13 de octubre y cierran el [X de noviembre].</p>
+    <a href="#" class="btn btn-gold btn-lg">Postula ahora</a>
+>>>>>>> c1e3aae (Populate agenda from tentative schedule and update hero)
   </div>
 </section>
 
@@ -404,8 +506,12 @@
       </div>
     </div>
     <div class="foot-bottom">
+<<<<<<< HEAD
       <span>© 2026 Gold for Good Hackathon. Site map mockup — content placeholders in brackets.</span>
       <span>Speaker photos: Pexels (placeholder headshots)</span>
+=======
+      <span>© 2026 Gold for Good Hackathon.</span>
+>>>>>>> c1e3aae (Populate agenda from tentative schedule and update hero)
     </div>
   </div>
 </footer>
