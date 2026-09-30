@@ -1,0 +1,462 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold for Good Hackathon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2140;
+    --muted:#5B6180;
+    --blue:#1D2B78;
+    --blue-deep:#12184A;
+    --cream:#F3ECDF;
+    --paper:#FFFFFF;
+    --gold:#C9992A;
+    --line:#E3DFCB;
+    --line-on-blue:rgba(255,255,255,0.16);
+    --ghost:#7480B8;
+    --ghost-on-blue:#6B7BC4;
+    --font-display:'Hanken Grotesk', system-ui, sans-serif;
+    --font-body:'Work Sans', system-ui, sans-serif;
+    --font-mono:'IBM Plex Mono', ui-monospace, monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  section, [id]{scroll-margin-top:90px;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-weight:400;
+  }
+  h1,h2,h3{font-family:var(--font-display);margin:0;text-wrap:balance;}
+  p{margin:0;}
+  a{color:var(--blue);text-decoration:none;}
+  a:hover{color:var(--gold);}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:24px;}
+  @media (min-width:900px){ .wrap{padding-inline:64px;} }
+
+  /* nav */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:20;background:var(--blue-deep);
+    transition:transform .3s ease, visibility 0s linear 0s;
+  }
+  .nav.is-hidden{transform:translateY(-100%);visibility:hidden;transition:transform .3s ease, visibility 0s linear .3s;}
+  @media (prefers-reduced-motion:reduce){ .nav, .nav.is-hidden{transition:none;} }
+  .nav-inner{
+    display:grid;grid-template-columns:1fr auto 1fr;grid-template-areas:"left brand right";
+    align-items:center;column-gap:40px;padding-block:16px;
+  }
+  .nav-left{grid-area:left;justify-content:flex-end;}
+  .nav-right{grid-area:right;justify-content:flex-start;}
+  .brand{grid-area:brand;display:flex;align-items:center;gap:10px;}
+  .brand img{height:58px;width:auto;}
+  .brand span{color:#fff;font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:0.07em;text-transform:uppercase;}
+  .nav-links{display:flex;align-items:center;gap:28px;white-space:nowrap;}
+  .nav-links a{color:#fff;font-size:14px;font-weight:500;letter-spacing:0.01em;position:relative;padding-block:4px;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-links a.active{color:var(--gold);}
+  .nav-links a.btn-gold, .nav-links a.btn-gold:hover{color:var(--blue-deep);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    font-family:var(--font-body);font-weight:600;font-size:14px;letter-spacing:0.01em;
+    border-radius:3px;padding:12px 24px;border:none;cursor:pointer;
+  }
+  .btn-gold{background:var(--gold);color:var(--blue-deep);}
+  .btn-gold:hover{background:#b7871f;color:var(--blue-deep);}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.5);}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+  .btn-sm{padding:9px 18px;font-size:13px;}
+  .btn-lg{padding:16px 36px;font-size:15px;}
+
+  /* mobile nav toggle */
+  .nav-toggle{
+    grid-area:toggle;justify-self:end;display:none;flex-direction:column;justify-content:center;gap:5px;
+    width:44px;height:44px;padding:10px;margin-right:-10px;
+    background:transparent;border:none;cursor:pointer;
+  }
+  .nav-toggle span{display:block;height:2px;width:100%;background:#fff;border-radius:2px;transition:transform .2s ease, opacity .2s ease;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media (max-width:760px){
+    .nav-inner{
+      grid-template-columns:1fr auto;grid-template-areas:"brand toggle" "left left" "right right";
+      column-gap:0;padding-block:10px;
+    }
+    .brand{justify-self:start;}
+    .nav-toggle{display:flex;}
+    .nav-links{display:none;flex-direction:column;align-items:stretch;gap:0;}
+    .nav-left{padding-top:8px;}
+    .nav-right{padding-bottom:16px;}
+    .nav.open .nav-links{display:flex;}
+    .nav-links a[data-nav]{padding-block:14px;font-size:16px;border-bottom:1px solid var(--line-on-blue);}
+    .nav-links .nav-cta{margin-top:16px;padding-block:14px;font-size:15px;}
+  }
+
+  /* block buttons on mobile */
+  @media (max-width:640px){
+    .hero-ctas{flex-direction:column;align-self:stretch;}
+    .hero-ctas .btn, .register .btn{display:flex;width:100%;}
+    .register .wrap{align-items:stretch;}
+  }
+
+  /* hero */
+  .hero{background:var(--blue-deep);color:#fff;padding-block:96px 88px;}
+  .hero .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;}
+  .hero-logo{height:240px;max-width:100%;width:auto;object-fit:contain;margin-bottom:28px;}
+  @media (max-width:640px){ .hero-logo{height:176px;} }
+  .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);}
+  .hero h1{font-size:clamp(36px,5.6vw,64px);font-weight:500;line-height:1.06;color:#fff;max-width:900px;margin-top:22px;}
+  .hero h1 em{font-style:italic;font-weight:500;color:var(--gold);}
+  .hero p.lede{font-family:var(--font-body);font-weight:300;font-size:18px;line-height:1.6;color:#C9CFEE;max-width:600px;margin-top:20px;}
+  .hero-ctas{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:32px;}
+  .stat-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:44px;padding-top:28px;border-top:1px solid var(--line-on-blue);width:100%;max-width:820px;}
+  .stat{display:flex;flex-direction:column;align-items:center;gap:5px;}
+  .stat-label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);}
+  .stat-value{font-size:16px;font-weight:500;}
+  .stat-link{display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.4);text-underline-offset:4px;}
+  .stat-link svg{flex-shrink:0;color:var(--gold);}
+  .stat-link:hover{color:var(--gold);text-decoration-color:var(--gold);}
+
+  /* sponsor strip */
+  .sponsors{background:var(--cream);padding-block:36px;}
+  .sponsors .wrap{display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
+  .sponsors .label{font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+  .sponsors img{height:42px;width:auto;}
+
+  section{padding-block:88px;}
+  .section-head{display:flex;flex-direction:column;gap:0;margin-bottom:40px;position:relative;max-width:640px;}
+  .ghost-word{
+    font-family:var(--font-display);font-weight:800;font-size:clamp(40px,7vw,72px);
+    text-transform:uppercase;letter-spacing:0.01em;line-height:1;margin:0 0 -10px 0;
+  }
+  .section-head p{font-family:var(--font-body);font-weight:300;font-size:16px;line-height:1.6;color:var(--muted);margin-top:12px;max-width:600px;}
+
+  /* about / tracks */
+  .about{background:var(--paper);}
+  .tracks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;}
+  @media (max-width:860px){ .tracks{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  @media (max-width:520px){ .tracks{grid-template-columns:1fr;} }
+  .track{border-top:2px solid var(--blue);padding-top:18px;display:flex;flex-direction:column;gap:8px;}
+  .track .num{font-family:var(--font-mono);font-size:13px;color:var(--blue);font-weight:600;}
+  .track h3{font-size:17px;font-weight:600;}
+  .track p{font-size:14px;line-height:1.55;color:var(--muted);}
+
+  /* speakers */
+  .speakers{background:var(--blue);color:#fff;}
+  .speakers .ghost-word{color:var(--ghost-on-blue);}
+  .speakers .section-head p{color:#B7BFE6;}
+  .grid-speakers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}
+  @media (max-width:820px){ .grid-speakers{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  @media (max-width:560px){ .grid-speakers{grid-template-columns:1fr;} }
+  .card-speaker{background:var(--cream);border-radius:6px;overflow:hidden;}
+  .card-speaker img{width:100%;height:230px;object-fit:cover;}
+  .card-speaker .meta{padding:18px;display:flex;flex-direction:column;gap:3px;}
+  .card-speaker h3{font-size:16px;color:var(--ink);font-weight:600;}
+  .card-speaker .role{font-size:13px;color:var(--blue);font-weight:600;}
+  .card-speaker .topic{font-size:12px;color:var(--muted);margin-top:2px;}
+
+  /* prizes */
+  .prizes{background:var(--cream);}
+  .prize-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}
+  @media (max-width:760px){ .prize-grid{grid-template-columns:1fr;} }
+  .prize{border-radius:6px;padding:32px 26px;display:flex;flex-direction:column;gap:8px;}
+  .prize.lead{background:var(--blue);color:#fff;}
+  .prize.lead .tag{color:var(--gold);}
+  .prize.lead .amount{color:#fff;}
+  .prize.lead .desc{color:#B7BFE6;}
+  .prize.plain{background:var(--paper);border:1px solid var(--line);}
+  .prize.plain .tag{color:var(--blue);}
+  .prize.plain .amount{color:var(--ink);}
+  .prize.plain .desc{color:var(--muted);}
+  .prize .tag{font-family:var(--font-mono);font-size:11.5px;text-transform:uppercase;letter-spacing:0.09em;font-weight:600;}
+  .prize .amount{font-family:var(--font-display);font-size:30px;font-weight:700;}
+  .prize .desc{font-size:14px;line-height:1.5;}
+
+  /* schedule */
+  .schedule{background:var(--paper);}
+  .day-list{display:flex;flex-direction:column;}
+  .day-row{display:flex;gap:28px;padding-block:18px;border-bottom:1px solid var(--line);align-items:baseline;}
+  .day-row:last-child{border-bottom:none;}
+  .day-row .time{font-family:var(--font-mono);width:88px;flex-shrink:0;color:var(--blue);font-weight:600;font-size:13.5px;font-variant-numeric:tabular-nums;}
+  .day-row .what{font-size:15.5px;color:var(--ink);font-weight:400;}
+
+  /* register cta */
+  .register{background:var(--blue);color:#fff;text-align:center;}
+  .register .wrap{display:flex;flex-direction:column;align-items:center;gap:20px;}
+  .register h2{font-size:clamp(28px,4vw,40px);font-weight:500;max-width:640px;}
+  .register h2 em{font-style:italic;font-weight:400;color:var(--gold);}
+  .register p{font-size:16px;color:#C9CFEE;max-width:520px;line-height:1.6;font-weight:300;}
+
+  /* footer */
+  footer{background:var(--blue-deep);color:#fff;padding-block:56px 32px;}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;}
+  .foot-brand{display:flex;align-items:center;gap:10px;}
+  .foot-brand img{height:84px;width:auto;}
+  .foot-brand span{font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--font-display);}
+  .foot-cols{display:flex;gap:56px;flex-wrap:wrap;}
+  .foot-col{display:flex;flex-direction:column;gap:9px;}
+  .foot-col .h{color:#9AA2CC;font-size:11.5px;text-transform:uppercase;letter-spacing:0.08em;font-family:var(--font-mono);}
+  .foot-col a, .foot-col span.item{color:#D3D7EF;font-size:14px;}
+  .foot-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .foot-bottom span{color:#9AA2CC;font-size:12px;}
+
+  ::selection{background:var(--gold);color:var(--blue-deep);}
+</style>
+
+<nav class="nav is-hidden">
+  <div class="wrap nav-inner">
+    <div class="nav-links nav-left" id="navlinks-left">
+      <a href="#about" data-nav>About</a>
+      <a href="#speakers" data-nav>Speakers</a>
+      <a href="#sponsors" data-nav>Sponsors</a>
+    </div>
+    <a class="brand" href="#" aria-label="Gold for Good Hackathon, back to top">
+      <img src="assets/logo-h.svg" alt="Gold for Good Hackathon logo">
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="navlinks-left navlinks-right" aria-expanded="false" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links nav-right" id="navlinks-right">
+      <a href="#prizes" data-nav>Prizes</a>
+      <a href="#schedule" data-nav>Schedule</a>
+      <a href="#register" class="btn btn-gold btn-sm nav-cta">Register</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="hero-logo" src="assets/logo.svg" alt="Gold for Good Hackathon logo">
+    <span class="kicker">October 21 · One-day hackathon</span>
+    <h1>Reimagining the gold production line, <em>together</em>.</h1>
+    <p class="lede">A one-day build sprint bringing engineers, miners, technologists and diplomats together to design real improvements across the gold value chain — efficiency, traceability, safety and sustainability.</p>
+    <div class="hero-ctas">
+      <a href="#register" class="btn btn-gold">Apply to compete</a>
+      <a href="#schedule" class="btn btn-ghost">See the agenda</a>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><span class="stat-label">Date</span><span class="stat-value">Oct 21, 2026</span></div>
+      <div class="stat"><span class="stat-label">Format</span><span class="stat-value">[In-person / Hybrid]</span></div>
+      <div class="stat"><span class="stat-label">Location</span><a class="stat-value stat-link" href="https://maps.app.goo.gl/zE9rFEyxRneadQ8h6" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Green Planet, La Paz, Bolivia</a></div>
+      <div class="stat"><span class="stat-label">Team size</span><span class="stat-value">[2–5 people]</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="sponsors" id="sponsors">
+  <div class="wrap">
+    <span class="label">Presented by</span>
+    <img src="assets/aceleratec.svg" alt="Aceleratec logo">
+    <img src="assets/swiss-embassy.png" alt="Embassy of Switzerland logo">
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="ghost-word" style="color:var(--ghost);">Challenge</span>
+      <h2 style="font-size:38px;font-weight:500;">Four tracks. One value chain.</h2>
+      <p>Teams pick a track and spend the day prototyping a real solution, mentored by industry engineers and judged by sponsor and embassy delegates.</p>
+    </div>
+    <div class="tracks">
+      <div class="track">
+        <span class="num">01</span>
+        <h3>Process efficiency</h3>
+        <p>Speed and yield improvements across extraction and refining.</p>
+      </div>
+      <div class="track">
+        <span class="num">02</span>
+        <h3>Environmental impact</h3>
+        <p>Cutting waste, water use and emissions in production.</p>
+      </div>
+      <div class="track">
+        <span class="num">03</span>
+        <h3>Supply chain traceability</h3>
+        <p>Tools that verify responsible sourcing end to end.</p>
+      </div>
+      <div class="track">
+        <span class="num">04</span>
+        <h3>Worker safety &amp; automation</h3>
+        <p>Reducing risk with sensing, automation and better tooling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="speakers" id="speakers">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="ghost-word">Lineup</span>
+      <h2 style="font-size:38px;font-weight:500;color:#fff;">Speakers &amp; mentors</h2>
+      <p>Placeholder lineup — swap in confirmed names, titles and bios as they're announced.</p>
+    </div>
+    <div class="grid-speakers">
+      <div class="card-speaker">
+        <img src="assets/speakers/speaker1.jpg" alt="Speaker portrait">
+        <div class="meta"><h3>[Speaker Name]</h3><span class="role">[Title, Organization]</span><span class="topic">[Session topic]</span></div>
+      </div>
+      <div class="card-speaker">
+        <img src="assets/speakers/speaker2.jpg" alt="Speaker portrait">
+        <div class="meta"><h3>[Speaker Name]</h3><span class="role">[Title, Organization]</span><span class="topic">[Session topic]</span></div>
+      </div>
+      <div class="card-speaker">
+        <img src="assets/speakers/speaker3.jpg" alt="Speaker portrait">
+        <div class="meta"><h3>[Speaker Name]</h3><span class="role">[Title, Organization]</span><span class="topic">[Session topic]</span></div>
+      </div>
+      <div class="card-speaker">
+        <img src="assets/speakers/speaker4.jpg" alt="Speaker portrait">
+        <div class="meta"><h3>[Speaker Name]</h3><span class="role">[Title, Organization]</span><span class="topic">[Session topic]</span></div>
+      </div>
+      <div class="card-speaker">
+        <img src="assets/speakers/speaker5.jpg" alt="Speaker portrait">
+        <div class="meta"><h3>[Speaker Name]</h3><span class="role">[Title, Organization]</span><span class="topic">[Session topic]</span></div>
+      </div>
+      <div class="card-speaker">
+        <img src="assets/speakers/speaker6.jpg" alt="Speaker portrait">
+        <div class="meta"><h3>[Speaker Name]</h3><span class="role">[Title, Organization]</span><span class="topic">[Session topic]</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prizes" id="prizes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="ghost-word" style="color:var(--ghost);">Rewards</span>
+      <h2 style="font-size:38px;font-weight:500;">Prizes &amp; judging</h2>
+    </div>
+    <div class="prize-grid">
+      <div class="prize lead">
+        <span class="tag">1st place</span>
+        <span class="amount">[$XX,XXX]</span>
+        <span class="desc">[Cash prize + Swiss Embassy mentorship placement]</span>
+      </div>
+      <div class="prize plain">
+        <span class="tag">2nd place</span>
+        <span class="amount">[$X,XXX]</span>
+        <span class="desc">[Cash prize + Aceleratec accelerator interview]</span>
+      </div>
+      <div class="prize plain">
+        <span class="tag">3rd place</span>
+        <span class="amount">[$X,XXX]</span>
+        <span class="desc">[Cash prize + sponsor swag bundle]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="schedule" id="schedule">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker" style="color:var(--blue);">Oct 21, 2026</span>
+      <h2 style="font-size:38px;font-weight:500;margin-top:10px;">The day at a glance</h2>
+    </div>
+    <div class="day-list">
+      <div class="day-row"><span class="time">[08:00]</span><span class="what">Check-in &amp; breakfast</span></div>
+      <div class="day-row"><span class="time">[09:00]</span><span class="what">Opening ceremony — welcome from Aceleratec &amp; the Embassy of Switzerland</span></div>
+      <div class="day-row"><span class="time">[10:00]</span><span class="what">Track briefings &amp; team formation</span></div>
+      <div class="day-row"><span class="time">[11:00]</span><span class="what">Build time — mentor office hours throughout</span></div>
+      <div class="day-row"><span class="time">[17:00]</span><span class="what">Submissions close</span></div>
+      <div class="day-row"><span class="time">[18:00]</span><span class="what">Pitches &amp; judging</span></div>
+      <div class="day-row"><span class="time">[20:00]</span><span class="what">Awards ceremony &amp; closing reception</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="register" id="register">
+  <div class="wrap">
+    <h2>Ready to help <em>modernize</em> the gold production line?</h2>
+    <p>Solo builders and teams up to [5] are welcome. Applications close [October X].</p>
+    <a href="#" class="btn btn-gold btn-lg">Apply now</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="assets/logo.svg" alt="Gold for Good Hackathon logo">
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <span class="h">Event</span>
+          <a href="#about">About</a>
+          <a href="#speakers">Speakers</a>
+          <a href="#schedule">Schedule</a>
+        </div>
+        <div class="foot-col">
+          <span class="h">Partners</span>
+          <span class="item">Aceleratec</span>
+          <span class="item">Embassy of Switzerland</span>
+        </div>
+        <div class="foot-col">
+          <span class="h">Contact</span>
+          <span class="item">[hello@goldforgoodhack.org]</span>
+          <span class="item">[@goldforgoodhack]</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Gold for Good Hackathon. Site map mockup — content placeholders in brackets.</span>
+      <span>Speaker photos: Pexels (placeholder headshots)</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var nav = document.querySelector('.nav');
+    var hero = document.querySelector('.hero');
+    if(!nav) return;
+    if(!hero || !('IntersectionObserver' in window)){ nav.classList.remove('is-hidden'); return; }
+    new IntersectionObserver(function(entries){
+      var e = entries[0];
+      var pastHero = !e.isIntersecting && e.boundingClientRect.top < 0;
+      nav.classList.toggle('is-hidden', !pastHero);
+      if(!pastHero){
+        nav.classList.remove('open');
+        var t = nav.querySelector('.nav-toggle');
+        if(t){ t.setAttribute('aria-expanded','false'); t.setAttribute('aria-label','Open menu'); }
+      }
+    }).observe(hero);
+  })();
+
+  (function(){
+    var toggle = document.querySelector('.nav-toggle');
+    var menu = document.querySelector('.nav');
+    if(!toggle || !menu) return;
+    function setOpen(open){
+      menu.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+    toggle.addEventListener('click', function(){ setOpen(!menu.classList.contains('open')); });
+    menu.addEventListener('click', function(e){ if(e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
+  })();
+
+  (function(){
+    try{
+      var links = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+      var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+      if(!('IntersectionObserver' in window) || !sections.length) return;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          var id = '#' + entry.target.id;
+          var link = links.find(function(a){ return a.getAttribute('href') === id; });
+          if(!link) return;
+          if(entry.isIntersecting){
+            links.forEach(function(a){ a.classList.remove('active'); });
+            link.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      sections.forEach(function(s){ io.observe(s); });
+    }catch(e){}
+  })();
+</script>
