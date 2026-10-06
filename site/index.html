@@ -5,21 +5,20 @@
 <title>Gold for Good Hackathon</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1B2140;
-    --muted:#5B6180;
-    --blue:#132279;
-    --blue-deep:#12184A;
-    --cream:#F3ECDF;
+    --ink:#231F20;
+    --muted:#6B6461;
+    --red:#D91A2A;
+    --red-deep:#B5121F;
+    --blue:#1A6FBF;
+    --cream:#F5F0E8;
     --paper:#FFFFFF;
-    --gold:#C9992A;
-    --line:#E3DFCB;
-    --line-on-blue:rgba(255,255,255,0.16);
-    --ghost:#085FB9;
-    --ghost-on-blue:#6B7BC4;
-    --font-display:'Hanken Grotesk', system-ui, sans-serif;
+    --line:#E8E0D2;
+    --line-on-red:rgba(255,255,255,0.22);
+    --text-on-red:#FBE3E4;
+    --font-display:'Sofia Sans Extra Condensed', system-ui, sans-serif;
     --font-body:'Work Sans', system-ui, sans-serif;
     --font-mono:'IBM Plex Mono', ui-monospace, monospace;
   }
@@ -33,17 +32,17 @@
     font-family:var(--font-body);
     font-weight:400;
   }
-  h1,h2,h3{font-family:var(--font-display);margin:0;text-wrap:balance;}
+  h1,h2,h3,h4,h5,h6{font-family:var(--font-display);margin:0;text-wrap:balance;text-transform:uppercase;}
   p{margin:0;}
   a{color:var(--blue);text-decoration:none;}
-  a:hover{color:var(--gold);}
+  a:hover{color:var(--red);}
   img{max-width:100%;display:block;}
   .wrap{max-width:1180px;margin:0 auto;padding-inline:24px;}
   @media (min-width:900px){ .wrap{padding-inline:64px;} }
 
   /* nav */
   .nav{
-    position:fixed;top:0;left:0;right:0;z-index:20;background:var(--blue-deep);
+    position:fixed;top:0;left:0;right:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line);
     transition:transform .3s ease, visibility 0s linear 0s;
   }
   .nav.is-hidden{transform:translateY(-100%);visibility:hidden;transition:transform .3s ease, visibility 0s linear .3s;}
@@ -56,21 +55,23 @@
   .nav-right{grid-area:right;justify-content:flex-start;}
   .brand{grid-area:brand;display:flex;align-items:center;gap:10px;}
   .brand img{height:58px;width:auto;}
-  .brand span{color:#fff;font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:0.07em;text-transform:uppercase;}
+  .brand span{color:var(--ink);font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:0.07em;text-transform:uppercase;}
   .nav-links{display:flex;align-items:center;gap:28px;white-space:nowrap;}
-  .nav-links a{color:#fff;font-size:14px;font-weight:500;letter-spacing:0.01em;position:relative;padding-block:4px;}
-  .nav-links a:hover{color:var(--gold);}
-  .nav-links a.active{color:var(--gold);}
-  .nav-links a.btn-gold, .nav-links a.btn-gold:hover{color:var(--blue-deep);}
+  .nav-links a{color:var(--ink);font-size:14px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;position:relative;padding-block:4px;}
+  .nav-links a:hover{color:var(--red);}
+  .nav-links a.active{color:var(--red);}
+  .nav-links a.btn-red, .nav-links a.btn-red:hover{color:#fff;}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;
-    font-family:var(--font-body);font-weight:600;font-size:14px;letter-spacing:0.01em;
+    font-family:var(--font-body);font-weight:600;font-size:14px;letter-spacing:0.06em;text-transform:uppercase;
     border-radius:3px;padding:12px 24px;border:none;cursor:pointer;
   }
-  .btn-gold{background:var(--gold);color:var(--blue-deep);}
-  .btn-gold:hover{background:#b7871f;color:var(--blue-deep);}
-  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.5);}
-  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+  .btn-red{background:var(--red);color:#fff;}
+  .btn-red:hover{background:var(--red-deep);color:#fff;}
+  .btn-linen{background:var(--cream);color:var(--red);}
+  .btn-linen:hover{background:#fff;color:var(--red-deep);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}
+  .btn-ghost:hover{border-color:var(--red);color:var(--red);}
   .btn-sm{padding:9px 18px;font-size:13px;}
   .btn-lg{padding:16px 36px;font-size:15px;}
 
@@ -80,7 +81,7 @@
     width:44px;height:44px;padding:10px;margin-right:-10px;
     background:transparent;border:none;cursor:pointer;
   }
-  .nav-toggle span{display:block;height:2px;width:100%;background:#fff;border-radius:2px;transition:transform .2s ease, opacity .2s ease;}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .2s ease, opacity .2s ease;}
   .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
   .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
   .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
@@ -95,7 +96,7 @@
     .nav-left{padding-top:8px;}
     .nav-right{padding-bottom:16px;}
     .nav.open .nav-links{display:flex;}
-    .nav-links a[data-nav]{padding-block:14px;font-size:16px;border-bottom:1px solid var(--line-on-blue);}
+    .nav-links a[data-nav]{padding-block:14px;font-size:16px;border-bottom:1px solid var(--line);}
     .nav-links .nav-cta{margin-top:16px;padding-block:14px;font-size:15px;}
   }
 
@@ -107,33 +108,35 @@
   }
 
   /* hero */
-  .hero{background:var(--blue-deep);color:#fff;padding-block:96px 88px;}
+  .hero{background:var(--paper);color:var(--ink);border-top:6px solid var(--red);padding-block:96px 88px;}
   .hero .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;}
   .hero-logo{height:240px;max-width:100%;width:auto;object-fit:contain;margin-bottom:28px;}
   @media (max-width:640px){ .hero-logo{height:176px;} }
-  .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);}
-  .hero h1{font-size:clamp(36px,5.6vw,64px);font-weight:500;line-height:1.06;color:#fff;max-width:900px;margin-top:22px;}
-  .hero h1 em{font-style:italic;font-weight:500;color:var(--gold);}
-  .hero p.lede{font-family:var(--font-body);font-weight:300;font-size:18px;line-height:1.6;color:#C9CFEE;max-width:600px;margin-top:20px;}
+  .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);}
+  .hero h1{font-size:clamp(44px,7vw,84px);font-weight:600;line-height:1;color:var(--ink);max-width:900px;margin-top:22px;}
+  .hero h1 em{font-style:italic;font-weight:500;color:var(--red);}
+  .hero p.lede{font-family:var(--font-body);font-weight:300;font-size:18px;line-height:1.6;color:var(--muted);max-width:600px;margin-top:20px;}
   .hero-ctas{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:32px;}
-  .stat-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:44px;padding-top:28px;border-top:1px solid var(--line-on-blue);width:100%;max-width:820px;}
+  @media (min-width:641px){ .hero-ctas{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;} }
+  .stat-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:44px;padding-top:28px;border-top:1px solid var(--line);width:100%;max-width:820px;}
   .stat{display:flex;flex-direction:column;align-items:center;gap:5px;}
-  .stat-label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);}
+  .stat-label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);}
   .stat-value{font-size:16px;font-weight:500;}
-  .stat-link{display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.4);text-underline-offset:4px;}
-  .stat-link svg{flex-shrink:0;color:var(--gold);}
-  .stat-link:hover{color:var(--gold);text-decoration-color:var(--gold);}
+  .stat-link{display:inline-flex;align-items:center;gap:6px;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px;}
+  .stat-link svg{flex-shrink:0;color:var(--red);}
+  .stat-link:hover{color:var(--red);text-decoration-color:var(--red);}
 
   /* sponsor strip */
   .sponsors{background:var(--cream);padding-block:36px;}
-  .sponsors .wrap{display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
+  .sponsors .wrap{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;}
+  .sponsor-logos{display:flex;align-items:center;justify-content:center;gap:24px 40px;flex-wrap:wrap;}
   .sponsors .label{font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
   .sponsors img{height:42px;width:auto;}
 
   section{padding-block:88px;}
   .section-head{display:flex;flex-direction:column;gap:0;margin-bottom:40px;position:relative;max-width:640px;}
   .ghost-word{
-    font-family:var(--font-display);font-weight:800;font-size:clamp(40px,7vw,72px);
+    font-family:var(--font-display);font-weight:600;font-size:clamp(40px,7vw,72px);
     text-transform:uppercase;letter-spacing:0.01em;line-height:1;margin:0 0 -10px 0;
   }
   .section-head p{font-family:var(--font-body);font-weight:300;font-size:16px;line-height:1.6;color:var(--muted);margin-top:12px;max-width:600px;}
@@ -143,23 +146,24 @@
   .tracks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;}
   @media (max-width:860px){ .tracks{grid-template-columns:repeat(2,minmax(0,1fr));} }
   @media (max-width:520px){ .tracks{grid-template-columns:1fr;} }
-  .track{border-top:2px solid var(--blue);padding-top:18px;display:flex;flex-direction:column;gap:8px;}
-  .track .num{font-family:var(--font-mono);font-size:13px;color:var(--blue);font-weight:600;}
-  .track h3{font-size:17px;font-weight:600;}
+  .track{border-top:2px solid var(--red);padding-top:18px;display:flex;flex-direction:column;gap:8px;}
+  .track .num{font-family:var(--font-mono);font-size:13px;color:var(--red);font-weight:600;}
+  .track h3{font-size:22px;font-weight:600;line-height:1.1;}
   .track p{font-size:14px;line-height:1.55;color:var(--muted);}
+  .track .btn{align-self:flex-start;margin-top:auto;gap:8px;}
+  .track p{margin-bottom:8px;}
 
   /* speakers */
-  .speakers{background:var(--blue);color:#fff;}
-  .speakers .ghost-word{color:var(--ghost-on-blue);}
-  .speakers .section-head p{color:#B7BFE6;}
+  .speakers{background:var(--red);color:#fff;}
+  .speakers .section-head p{color:var(--text-on-red);}
   .grid-speakers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}
   @media (max-width:820px){ .grid-speakers{grid-template-columns:repeat(2,minmax(0,1fr));} }
   @media (max-width:560px){ .grid-speakers{grid-template-columns:1fr;} }
   .card-speaker{background:var(--cream);border-radius:6px;overflow:hidden;}
   .card-speaker img{width:100%;height:230px;object-fit:cover;}
   .card-speaker .meta{padding:18px;display:flex;flex-direction:column;gap:3px;}
-  .card-speaker h3{font-size:16px;color:var(--ink);font-weight:600;}
-  .card-speaker .role{font-size:13px;color:var(--blue);font-weight:600;}
+  .card-speaker h3{font-size:21px;color:var(--ink);font-weight:600;}
+  .card-speaker .role{font-size:13px;color:var(--red);font-weight:600;}
   .card-speaker .topic{font-size:12px;color:var(--muted);margin-top:2px;}
 
   /* prizes */
@@ -167,23 +171,23 @@
   .prize-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}
   @media (max-width:760px){ .prize-grid{grid-template-columns:1fr;} }
   .prize{border-radius:6px;padding:32px 26px;display:flex;flex-direction:column;gap:8px;}
-  .prize.lead{background:var(--blue);color:#fff;}
-  .prize.lead .tag{color:var(--gold);}
+  .prize.lead{background:var(--red);color:#fff;}
+  .prize.lead .tag{color:#fff;}
   .prize.lead .amount{color:#fff;}
-  .prize.lead .desc{color:#B7BFE6;}
+  .prize.lead .desc{color:var(--text-on-red);}
   .prize.plain{background:var(--paper);border:1px solid var(--line);}
-  .prize.plain .tag{color:var(--blue);}
+  .prize.plain .tag{color:var(--red);}
   .prize.plain .amount{color:var(--ink);}
   .prize.plain .desc{color:var(--muted);}
   .prize .tag{font-family:var(--font-mono);font-size:11.5px;text-transform:uppercase;letter-spacing:0.09em;font-weight:600;}
-  .prize .amount{font-family:var(--font-display);font-size:30px;font-weight:700;}
+  .prize .amount{font-family:var(--font-display);font-size:38px;font-weight:700;}
   .prize .desc{font-size:14px;line-height:1.5;}
 
   /* schedule */
   .schedule{background:var(--paper);}
   .phase + .phase{margin-top:64px;}
-  .phase-head{display:flex;flex-direction:column;gap:6px;padding-bottom:16px;border-bottom:2px solid var(--blue);}
-  .phase-head h3{font-size:22px;font-weight:600;}
+  .phase-head{display:flex;flex-direction:column;gap:6px;padding-bottom:16px;border-bottom:2px solid var(--red);}
+  .phase-head h3{font-size:28px;font-weight:600;}
   .phase-head p{font-size:14px;line-height:1.55;color:var(--muted);}
   .day-list{display:flex;flex-direction:column;}
   .day-row{display:flex;gap:28px;padding-block:18px;border-bottom:1px solid var(--line);align-items:baseline;}
@@ -202,26 +206,26 @@
   }
 
   /* register cta */
-  .register{background:var(--blue);color:#fff;text-align:center;}
+  .register{background:var(--red);color:#fff;text-align:center;}
   .register .wrap{display:flex;flex-direction:column;align-items:center;gap:20px;}
-  .register h2{font-size:clamp(28px,4vw,40px);font-weight:500;max-width:640px;}
-  .register h2 em{font-style:italic;font-weight:400;color:var(--gold);}
-  .register p{font-size:16px;color:#C9CFEE;max-width:520px;line-height:1.6;font-weight:300;}
+  .register h2{font-size:clamp(36px,5vw,52px);font-weight:600;max-width:640px;}
+  .register h2 em{font-style:italic;font-weight:400;color:var(--cream);}
+  .register p{font-size:16px;color:var(--text-on-red);max-width:520px;line-height:1.6;font-weight:300;}
 
   /* footer */
-  footer{background:var(--blue-deep);color:#fff;padding-block:56px 32px;}
+  footer{background:var(--cream);color:var(--ink);padding-block:56px 32px;}
   .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;}
   .foot-brand{display:flex;align-items:center;gap:10px;}
   .foot-brand img{height:84px;width:auto;}
   .foot-brand span{font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--font-display);}
   .foot-cols{display:flex;gap:56px;flex-wrap:wrap;}
   .foot-col{display:flex;flex-direction:column;gap:9px;}
-  .foot-col .h{color:#9AA2CC;font-size:11.5px;text-transform:uppercase;letter-spacing:0.08em;font-family:var(--font-mono);}
-  .foot-col a, .foot-col span.item{color:#D3D7EF;font-size:14px;}
-  .foot-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
-  .foot-bottom span{color:#9AA2CC;font-size:12px;}
+  .foot-col .h{color:var(--red);font-size:11.5px;text-transform:uppercase;letter-spacing:0.08em;font-family:var(--font-mono);}
+  .foot-col a, .foot-col span.item{color:var(--ink);font-size:14px;}
+  .foot-bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .foot-bottom span{color:var(--muted);font-size:12px;}
 
-  ::selection{background:var(--gold);color:var(--blue-deep);}
+  ::selection{background:var(--red);color:#fff;}
 </style>
 
 <nav class="nav is-hidden">
@@ -240,7 +244,7 @@
     <div class="nav-links nav-right" id="navlinks-right">
       <a href="#prizes" data-nav>Premios</a>
       <a href="#schedule" data-nav>Agenda</a>
-      <a href="#register" class="btn btn-gold btn-sm nav-cta">Regístrate</a>
+      <a href="#register" class="btn btn-red btn-sm nav-cta">Regístrate</a>
     </div>
   </div>
 </nav>
@@ -252,7 +256,7 @@
     <h1>Reimaginando la cadena de producción del oro, <em>juntos</em>.</h1>
     <p class="lede">Seis semanas de sesiones informativas y una semana intensiva de creación que reúnen a ingenieros, mineros, tecnólogos y diplomáticos para diseñar mejoras reales en toda la cadena de valor del oro: eficiencia, trazabilidad, seguridad y sostenibilidad.</p>
     <div class="hero-ctas">
-      <a href="#register" class="btn btn-gold">Postula para competir</a>
+      <a href="#register" class="btn btn-red">Postula para competir</a>
       <a href="#schedule" class="btn btn-ghost">Ver la agenda</a>
     </div>
     <div class="stat-row">
@@ -267,16 +271,18 @@
 <div class="sponsors" id="sponsors">
   <div class="wrap">
     <span class="label">Presentado por</span>
-    <img src="assets/aceleratec.svg" alt="Logo de Aceleratec">
-    <img src="assets/swiss-embassy.png" alt="Logo de la Embajada de Suiza">
+    <div class="sponsor-logos">
+      <img src="assets/aceleratec.svg" alt="Logo de Aceleratec">
+      <img src="assets/swiss-embassy.png" alt="Logo de la Embajada de Suiza">
+      <img src="assets/UMSA-LOGO.png" alt="UMS">
+    </div>
   </div>
 </div>
 
 <section class="about" id="about">
   <div class="wrap">
     <div class="section-head">
-      <span class="ghost-word" style="color:var(--ghost);">Desafío</span>
-      <h2 style="font-size:38px;font-weight:500;">Cuatro categorías. Una cadena de valor.</h2>
+      <h2 class="ghost-word" style="color:var(--red);">Desafíos</h2>
       <p>Los equipos eligen una categoría y dedican la semana del hackatón a prototipar una solución real, con mentorías 1 a 1 de expertos en salud, medio ambiente y trazabilidad, y una evaluación en dos etapas: técnica y ante autoridades.</p>
     </div>
     <div class="tracks">
@@ -284,21 +290,25 @@
         <span class="num">01</span>
         <h3>Eficiencia de procesos</h3>
         <p>Mejoras de velocidad y rendimiento en la extracción y el refinado.</p>
+        <a href="#" class="btn btn-ghost btn-sm"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Más información</a>
       </div>
       <div class="track">
         <span class="num">02</span>
         <h3>Impacto ambiental</h3>
         <p>Reducción de residuos, uso de agua y emisiones en la producción.</p>
+        <a href="#" class="btn btn-ghost btn-sm"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Más información</a>
       </div>
       <div class="track">
         <span class="num">03</span>
         <h3>Trazabilidad de la cadena de suministro</h3>
         <p>Herramientas que verifican el abastecimiento responsable de principio a fin.</p>
+        <a href="#" class="btn btn-ghost btn-sm"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Más información</a>
       </div>
       <div class="track">
         <span class="num">04</span>
         <h3>Seguridad laboral y automatización</h3>
         <p>Reducción de riesgos mediante sensores, automatización y mejores herramientas.</p>
+        <a href="#" class="btn btn-ghost btn-sm"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Más información</a>
       </div>
     </div>
   </div>
@@ -307,8 +317,7 @@
 <section class="speakers" id="speakers">
   <div class="wrap">
     <div class="section-head">
-      <span class="ghost-word" style="color:var(--ghost);">Invitados</span>
-      <h2 style="font-size:38px;font-weight:500;color:#fff;">Ponentes y mentores</h2>
+      <h2 class="ghost-word" style="color:#fff;">Invitados</h2>
       <p>Lista provisional: se actualizarán los nombres, cargos y biografías a medida que se confirmen.</p>
     </div>
     <div class="grid-speakers">
@@ -343,8 +352,7 @@
 <section class="prizes" id="prizes">
   <div class="wrap">
     <div class="section-head">
-      <span class="ghost-word" style="color:var(--ghost);">Premios</span>
-      <h2 style="font-size:38px;font-weight:500;">Premios y jurado</h2>
+      <h2 class="ghost-word" style="color:var(--red);">Premios</h2>
     </div>
     <div class="prize-grid">
       <div class="prize lead">
@@ -369,13 +377,13 @@
 <section class="schedule" id="schedule">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker" style="color:var(--blue);">13 de octubre – 28 de noviembre de 2026</span>
-      <h2 style="font-size:38px;font-weight:500;margin-top:10px;">Agenda</h2>
+      <span class="kicker" style="color:var(--red);">13 de octubre – 28 de noviembre de 2026</span>
+      <h2 style="font-size:46px;font-weight:600;margin-top:10px;">Agenda</h2>
     </div>
 
     <div class="phase">
       <div class="phase-head">
-        <span class="kicker" style="color:var(--blue);">13 oct – 20 nov</span>
+        <span class="kicker" style="color:var(--red);">13 oct – 20 nov</span>
         <h3>Sesiones informativas</h3>
         <p>Salvo indicación contraria, cada sesión sigue el mismo formato: 19:00 presentación · 19:30 consultas · 20:00 matching/networking.</p>
       </div>
@@ -399,7 +407,7 @@
 
     <div class="phase">
       <div class="phase-head">
-        <span class="kicker" style="color:var(--blue);">21 – 28 nov</span>
+        <span class="kicker" style="color:var(--red);">21 – 28 nov</span>
         <h3>Semana del hackatón</h3>
         <p>Una semana de ideación, prototipado y mentorías 1 a 1, que culmina con la evaluación de soluciones y la premiación.</p>
       </div>
@@ -430,7 +438,7 @@
   <div class="wrap">
     <h2>¿Listo para ayudar a <em>modernizar</em> la cadena de producción del oro?</h2>
     <p>Pueden participar personas individuales y equipos de hasta [5] integrantes. Las inscripciones abren el 13 de octubre y cierran el [X de noviembre].</p>
-    <a href="#" class="btn btn-gold btn-lg">Postula ahora</a>
+    <a href="#" class="btn btn-linen btn-lg">Postula ahora</a>
   </div>
 </section>
 
