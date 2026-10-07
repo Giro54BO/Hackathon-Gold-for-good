@@ -113,8 +113,8 @@
   .hero-logo{height:240px;max-width:100%;width:auto;object-fit:contain;margin-bottom:28px;}
   @media (max-width:640px){ .hero-logo{height:176px;} }
   .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);}
-  .hero h1{font-size:clamp(44px,7vw,84px);font-weight:600;line-height:1;color:var(--ink);max-width:900px;margin-top:22px;}
-  .hero h1 em{font-style:italic;font-weight:500;color:var(--red);}
+  .hero h1{font-size:clamp(44px,7vw,84px);font-weight:900;line-height:3.9rem;color:var(--ink);max-width:900px;margin-top:22px;text-wrap:balance;text-transform:uppercase; }
+  .hero h1 em{font-style:italic;font-weight:900;color:var(--red);}
   .hero p.lede{font-family:var(--font-body);font-weight:300;font-size:18px;line-height:1.6;color:var(--muted);max-width:600px;margin-top:20px;}
   .hero-ctas{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:32px;}
   @media (min-width:641px){ .hero-ctas{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;} }
@@ -127,7 +127,7 @@
   .stat-link:hover{color:var(--red);text-decoration-color:var(--red);}
 
   /* sponsor strip */
-  .sponsors{background:var(--cream);padding-block:36px;}
+  .sponsors{background:var(--paper);padding-block:36px;}
   .sponsors .wrap{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;}
   .sponsor-logos{display:flex;align-items:center;justify-content:center;gap:24px 40px;flex-wrap:wrap;}
   .sponsors .label{font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
@@ -270,11 +270,12 @@
 
 <div class="sponsors" id="sponsors">
   <div class="wrap">
-    <span class="label">Presentado por</span>
+    <span class="stat-label">Presentado por</span>
     <div class="sponsor-logos">
       <img src="assets/aceleratec.svg" alt="Logo de Aceleratec">
-      <img src="assets/swiss-embassy.png" alt="Logo de la Embajada de Suiza">
-      <img src="assets/UMSA-LOGO.png" alt="UMS">
+      <img src="assets/Suiza_CMYK.png" alt="Suiza">
+         <img src="assets/logo_Embajada_Suiza-01.jpg" alt="Logo embajada Suiza">
+      <img src="assets/Logo-UMSA-1.png" alt="UMS">
     </div>
   </div>
 </div>
