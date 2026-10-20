@@ -70,11 +70,11 @@
   .nav.is-hidden{transform:translateY(-100%);visibility:hidden;transition:transform .3s ease, visibility 0s linear .3s;}
   @media (prefers-reduced-motion:reduce){ .nav, .nav.is-hidden{transition:none;} }
   .nav-inner{
-    display:grid;grid-template-columns:1fr auto 1fr;grid-template-areas:"left brand right";
-    align-items:center;column-gap:40px;padding-block:16px;
+    display:flex;align-items:center;column-gap:40px;padding-block:16px;
   }
   .nav-left{grid-area:left;justify-content:flex-end;}
   .nav-right{grid-area:right;justify-content:flex-start;}
+  @media (min-width:761px){ .nav-right{margin-left:auto;} }
   .brand{grid-area:brand;display:flex;align-items:center;gap:10px;}
   .brand img{height:58px;width:auto;}
   .brand span{color:var(--ink);font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:0.07em;text-transform:uppercase;}
@@ -109,7 +109,7 @@
   .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
   @media (max-width:760px){
     .nav-inner{
-      grid-template-columns:1fr auto;grid-template-areas:"brand toggle" "left left" "right right";
+      display:grid;grid-template-columns:1fr auto;grid-template-areas:"brand toggle" "left left" "right right";
       column-gap:0;padding-block:10px;
     }
     .brand{justify-self:start;}
@@ -263,14 +263,14 @@
 
 <nav class="nav is-hidden">
   <div class="wrap nav-inner">
+    <a class="brand" href="#" aria-label="Gold for Good Hackathon, volver arriba">
+      <img src="assets/logo-h.svg" alt="Logo de Gold for Good Hackathon">
+    </a>
     <div class="nav-links nav-left" id="navlinks-left">
       <a href="#about" data-nav>Desafíos</a>
       <a href="#speakers" data-nav>Invitados</a>
       <a href="#sponsors" data-nav>Patrocinadores</a>
     </div>
-    <a class="brand" href="#" aria-label="Gold for Good Hackathon, volver arriba">
-      <img src="assets/logo-h.svg" alt="Logo de Gold for Good Hackathon">
-    </a>
     <button class="nav-toggle" type="button" aria-controls="navlinks-left navlinks-right" aria-expanded="false" aria-label="Abrir menú">
       <span></span><span></span><span></span>
     </button>
